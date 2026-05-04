@@ -1,3 +1,28 @@
+document.addEventListener("keydown", (e) => {
+
+  // 入力欄にフォーカスあるときは無効
+  if (e.target.tagName === "INPUT") return;
+
+  switch (e.key) {
+
+    case "f":
+      showAnswer();
+      break;
+
+    case "g":
+      markWrong();
+      break;
+
+    case "h":
+      markCorrect();
+      break;
+
+    case "j":
+      nextQuestion();
+      break;
+  }
+});
+
 let current = 0;
 let wrongList = [];
 let currentData = quizData;
