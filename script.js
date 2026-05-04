@@ -9,11 +9,11 @@ document.addEventListener("keydown", (e) => {
       showAnswer();
       break;
 
-    case "g":
+    case "h":
       markWrong();
       break;
 
-    case "h":
+    case "g":
       markCorrect();
       break;
 
