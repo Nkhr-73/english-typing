@@ -2,20 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>暗記クイズ</title>
+  <title>暗記マスター</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>暗記クイズ</h1>
+<h1>暗記マスター</h1>
 
 <div id="card">
   <p id="question"></p>
   <p id="answer" class="hidden"></p>
 </div>
 
-<button onclick="showAnswer()">答え</button>
-<button onclick="nextQuestion()">次へ</button>
+<div class="buttons">
+  <button onclick="showAnswer()">答え</button>
+  <button onclick="markWrong()">残念</button>
+  <button onclick="nextQuestion()">次へ</button>
+</div>
+
+<button id="reviewBtn" onclick="startReview()">復習モード</button>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
