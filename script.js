@@ -3,6 +3,19 @@ let wrongList = [];
 let reviewMode = false;
 let currentData = quizData;
 
+function loadData() {
+  const savedWrong = localStorage.getItem("wrongList");
+  const savedCurrent = localStorage.getItem("current");
+
+  if (savedWrong) {
+    wrongList = JSON.parse(savedWrong);
+  }
+
+  if (savedCurrent) {
+    current = parseInt(savedCurrent);
+  }
+}
+
 function showQuestion() {
   const q = currentData[current];
   document.getElementById("question").textContent = q.q;
@@ -20,11 +33,13 @@ function nextQuestion() {
     alert("終了！");
     current = 0;
   }
+  saveData();
   showQuestion();
 }
 
 function markWrong() {
   wrongList.push(currentData[current]);
+  saveData();
   nextQuestion();
 }
 
@@ -40,3 +55,10 @@ function startReview() {
 }
 
 showQuestion();
+
+function saveData() {
+  localStorage.setItem("wrongList", JSON.stringify(wrongList));
+  localStorage.setItem("current", current);
+}
+
+
