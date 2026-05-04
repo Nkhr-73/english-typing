@@ -1,7 +1,15 @@
-const quizData = [
-  { q: "そこに山があるからと言った登山家は？", a: "ジョージ・マロリー" },
-  { q: "日本で2番目に高い山は？", a: "北岳" },
-  { q: "メモは何の略？", a: "メモランダム" },
-  { q: "足首につけるアクセサリーは？", a: "アンクレット" },
-  { q: "6,28,496のような数は？", a: "完全数" }
-];a
+function convert() {
+  const input = document.getElementById("csvInput").value.trim();
+  const lines = input.split("\n");
+
+  const result = lines
+    .filter(line => line.trim())
+    .map(line => {
+      const [q, a] = line.split(",");
+      return `  { q: ${JSON.stringify(q)}, a: ${JSON.stringify(a)}, correct: 0, wrong: 0 }`;
+    });
+
+  const jsCode = `const quizData = [\n${result.join(",\n")}\n];`;
+
+  document.getElementById("output").textContent = jsCode;
+}
