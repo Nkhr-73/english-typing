@@ -27,6 +27,29 @@ let current = 0;
 let wrongList = [];
 let currentData = quizData;
 
+let isRandom = false;
+
+function toggleRandom() {
+  isRandom = !isRandom;
+
+  const btn = document.querySelector("button[onclick='toggleRandom()']");
+  btn.textContent = isRandom ? "ランダムON" : "ランダムOFF";
+
+  if (isRandom) {
+    shuffleArray(currentData);
+  }
+
+  current = 0;
+  showQuestion();
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 // ----------------------
 // 表示
 // ----------------------
@@ -62,11 +85,17 @@ function markWrong() {
 }
 
 function nextQuestion() {
-  current++;
-  if (current >= currentData.length) {
-    alert("終了！");
-    current = 0;
+
+  if (isRandom) {
+    current = Math.floor(Math.random() * currentData.length);
+  } else {
+    current++;
+    if (current >= currentData.length) {
+      alert("終了！");
+      current = 0;
+    }
   }
+
   saveAll();
   showQuestion();
 }
