@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>砂上の楼閣攻略</title>
+  <title>暗記マスター</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +12,20 @@
 <div id="card">
   <p id="question"></p>
   <p id="answer" class="hidden"></p>
+  <p id="stats"></p>
 </div>
 
 <div class="buttons">
   <button onclick="showAnswer()">答え</button>
-  <button onclick="markWrong()">残念</button>
+  <button onclick="markCorrect()">正解した</button>
+  <button onclick="markWrong()">わからん</button>
   <button onclick="nextQuestion()">次へ</button>
 </div>
 
-<button id="reviewBtn" onclick="startReview()">復習モード</button>
+<br>
+
+<button onclick="startReview()">復習モード</button>
+<button onclick="resetData()">リセット</button>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
